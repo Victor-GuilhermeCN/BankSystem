@@ -14,6 +14,3 @@ class Account:
             print('Money it is not enough.')
         else:
             self.account_balance -= value
-
-    def account_balance(self):
-        print(f'Account Balance:R$:{self.account_balance:.2f}')

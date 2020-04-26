@@ -3,7 +3,7 @@ from account import Account
 
 print('Enter your details:')
 client1 = Client(str(input('Name:')), int(input('CPF: ')), int(input('Age: ')))
-user1 = Account(client1, float(input('Account Balance: ')), float(input('Account Limit: ')))
+user1 = Account(client1, int(input('Account Balance: ')), int(input('Account Limit: ')))
 
 
 def line():
@@ -34,19 +34,23 @@ def option_choosed():
                   f'What is your option: ')
         line()
     if opt == '1':
-        return f'{user1.account_balance()}', line(), contin()
+        print(f'Your balance is R$:{user1.account_balance:.2f}')
+        return line(), contin()
 
     elif opt == '2':
-        value = float(input('How much do you want to whithdraw? R$: '))
+        value = int(input('How much do you want to whithdraw? R$: '))
         user1.withdraw_money(value)
-        print(f'You made a withdrawal from R$:{value}')
-        return f'Your balance is R$:{user1.account_balance()}', line(), contin()
+        print(f'You made a withdrawal from R$:{value:.2f}\n'
+              f'Yor balance is R$:{user1.account_balance:.2f}')
+        return line(), contin()
 
     elif opt == '3':
-        value = float(input('How much do you want to deposit: R$:'))
+        value = int(input('How much do you want to deposit: R$:'))
         user1.deposit(value)
-        print(f'You made a deposit of R$:{value}')
-        return f'Your balance is R$:{user1.account_balance()}', line(), contin()
+        print(f'You made a deposit of R$:{value:.2f}\n'
+              f'Your balance is {user1.account_balance:.2f}')
+        return line(), contin()
+
     elif opt == '4':
         while True:
             print('See you soon!')
